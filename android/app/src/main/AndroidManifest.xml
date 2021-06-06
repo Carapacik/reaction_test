@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.reaction_test">
    <application
-        android:label="reaction_test"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Reaction test"
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -8,7 +8,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,9 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF282E3D),
-      body: Stack(
-        children: [
+        backgroundColor: Color(0xFF282E3D),
+        body: Stack(children: [
           Align(
               alignment: const Alignment(0, -0.8),
               child: Text("Test your reaction speed",
@@ -47,42 +45,34 @@ class _MyHomePageState extends State<MyHomePage> {
           Align(
               alignment: Alignment.center,
               child: ColoredBox(
-                color: Color(0xFF6D6D6D),
-                child: SizedBox(
-                  height: 160,
-                  width: 300,
-                  child: Center(
-                    child: Text(millisecondsText,
-                        style: TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white)),
-                  ),
-                ),
-              )),
+                  color: Color(0xFF6D6D6D),
+                  child: SizedBox(
+                      height: 160,
+                      width: 300,
+                      child: Center(
+                          child: Text(millisecondsText,
+                              style: TextStyle(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white)))))),
           Align(
               alignment: const Alignment(0, 0.8),
               child: GestureDetector(
-                onTap: () => setState(() {
-                  switchStateOnTap();
-                }),
-                child: ColoredBox(
-                    color: _getButtonColor(),
-                    child: SizedBox(
-                      height: 150,
-                      width: 200,
-                      child: Center(
-                        child: Text(_getButtonText(),
-                            style: TextStyle(
-                                fontSize: 38,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.white)),
-                      ),
-                    )),
-              ))
-        ],
-      ),
-    );
+                  onTap: () => setState(() {
+                        _switchState();
+                      }),
+                  child: ColoredBox(
+                      color: _getButtonColor(),
+                      child: SizedBox(
+                          height: 150,
+                          width: 200,
+                          child: Center(
+                              child: Text(_getButtonText(),
+                                  style: TextStyle(
+                                      fontSize: 38,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.white)))))))
+        ]));
   }
 
   String _getButtonText() {
@@ -108,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _startWaitingTimer() {
-    final int randomMilliseconds = Random().nextInt(4000) + 1000;
+    final int randomMilliseconds = Random().nextInt(4500) + 500;
     Timer(Duration(milliseconds: randomMilliseconds), () {
       setState(() {
         gameState = GameState.canBeStopped;
@@ -125,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void switchStateOnTap() {
+  void _switchState() {
     switch (gameState) {
       case GameState.readyToStart:
         gameState = GameState.waiting;
