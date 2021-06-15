@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,6 +11,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
       home: MyHomePage(),
     );
@@ -32,47 +36,64 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFF282E3D),
-        body: Stack(children: [
-          Align(
-              alignment: const Alignment(0, -0.8),
+      backgroundColor: Color(0xFF282E3D),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40),
               child: Text("Test your reaction speed",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 38,
                       fontWeight: FontWeight.w900,
-                      color: Colors.white))),
-          Align(
-              alignment: Alignment.center,
-              child: ColoredBox(
-                  color: Color(0xFF6D6D6D),
-                  child: SizedBox(
-                      height: 160,
-                      width: 300,
-                      child: Center(
-                          child: Text(millisecondsText,
-                              style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white)))))),
-          Align(
-              alignment: const Alignment(0, 0.8),
-              child: GestureDetector(
+                      color: Colors.white)),
+            ),
+            Align(
+                alignment: Alignment.center,
+                child: ColoredBox(
+                    color: Color(0xFF6D6D6D),
+                    child: SizedBox(
+                        height: 150,
+                        width: double.infinity,
+                        child: Center(
+                            child: Text(millisecondsText,
+                                style: TextStyle(
+                                    fontSize: 36,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white)))))),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 70),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: GestureDetector(
                   onTap: () => setState(() {
-                        _switchState();
-                      }),
+                    _switchState();
+                  }),
                   child: ColoredBox(
-                      color: _getButtonColor(),
-                      child: SizedBox(
-                          height: 150,
-                          width: 200,
-                          child: Center(
-                              child: Text(_getButtonText(),
-                                  style: TextStyle(
-                                      fontSize: 38,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.white)))))))
-        ]));
+                    color: _getButtonColor(),
+                    child: SizedBox(
+                      height: 150,
+                      width: 200,
+                      child: Center(
+                        child: Text(
+                          _getButtonText(),
+                          style: TextStyle(
+                            fontSize: 38,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   String _getButtonText() {
