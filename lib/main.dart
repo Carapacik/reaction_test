@@ -70,11 +70,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: () => setState(() {
                     _switchState();
                   }),
-                  child: ColoredBox(
-                    color: _getButtonColor(),
-                    child: SizedBox(
-                      height: 150,
-                      width: 200,
+                  child: SizedBox(
+                    height: 150,
+                    width: 200,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                          color: _getButtonColor(),
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
                       child: Center(
                         child: Text(
                           _getButtonText(),
