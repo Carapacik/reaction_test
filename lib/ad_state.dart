@@ -8,10 +8,11 @@ class AdState {
   AdState(this.initialization);
 
   String get bannerAdUnitId => Platform.isAndroid
-      ? "ca-app-pub-3940256099942544/6300978111"
+      ? "ca-app-pub-6023624871762142/6725081797"
       : "id for Apple";
 
   BannerAdListener get adListener => _adListener;
+
   BannerAdListener _adListener = BannerAdListener(
     onAdLoaded: (Ad ad) => print('Ad loaded.'),
     onAdFailedToLoad: (Ad ad, LoadAdError error) {
