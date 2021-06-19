@@ -2,7 +2,7 @@ name: reactiontest
 description: Simple reaction test
 publish_to: 'none'
 
-version: 1.0.3+4
+version: 1.0.4+1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -21,7 +21,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icons/icon.webp"
+  image_path: "assets/icons/icon.png"
 
 flutter:
   uses-material-design: true

@@ -44,7 +44,7 @@ class MyHomePageState extends State<MyHomePage> {
   Timer? waitingTimer;
   Timer? stoppableTimer;
 
-  late BannerAd bannerAd;
+  BannerAd? bannerAd;
 
   @override
   void didChangeDependencies() {
@@ -54,7 +54,7 @@ class MyHomePageState extends State<MyHomePage> {
       setState(() {
         bannerAd = BannerAd(
           adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
+          size: AdSize.fullBanner,
           request: AdRequest(),
           listener: adState.adListener,
         )..load();
@@ -65,12 +65,13 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF330033),
+      backgroundColor: Color(0xFF17286C),
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
-              child: Stack(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 40),
@@ -81,45 +82,40 @@ class MyHomePageState extends State<MyHomePage> {
                             fontWeight: FontWeight.w900,
                             color: Colors.white)),
                   ),
-                  Align(
-                      alignment: Alignment.center,
-                      child: ColoredBox(
-                          color: Color(0xFF6D6D6D),
-                          child: SizedBox(
-                              height: 150,
-                              width: double.infinity,
-                              child: Center(
-                                  child: Text(millisecondsText,
-                                      style: TextStyle(
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white)))))),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 70),
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: GestureDetector(
-                        onTap: () => setState(() {
-                          _switchState();
-                        }),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: ColoredBox(
+                        color: Colors.black45,
                         child: SizedBox(
-                          height: 150,
-                          width: 200,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                                color: _getButtonColor(),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
+                            height: 150,
+                            width: double.infinity,
                             child: Center(
-                              child: Text(
-                                _getButtonText(),
-                                style: TextStyle(
-                                  fontSize: 38,
-                                  fontWeight: FontWeight.w900,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
+                                child: Text(millisecondsText,
+                                    style: TextStyle(
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white))))),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: GestureDetector(
+                      onTap: () => setState(() {
+                        _switchState();
+                      }),
+                      child: Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: _getButtonColor(),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        height: 140,
+                        width: 200,
+                        child: Text(
+                          _getButtonText(),
+                          style: TextStyle(
+                            fontSize: 38,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -128,10 +124,13 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            // ignore: unnecessary_null_comparison
             bannerAd == null
-                ? SizedBox(height: 50)
-                : Container(height: 50, child: AdWidget(ad: bannerAd))
+                ? SizedBox(height: 60)
+                : Container(
+                    height: 60,
+                    child: AdWidget(ad: bannerAd!),
+                    alignment: Alignment.center,
+                  )
           ],
         ),
       ),
