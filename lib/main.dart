@@ -7,8 +7,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:reactiontest/ad_state.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   final initFuture = MobileAds.instance.initialize();
   final adState = AdState(initFuture);
   runApp(
@@ -22,9 +23,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
     return MaterialApp(
       home: MyHomePage(),
     );
@@ -54,7 +52,7 @@ class MyHomePageState extends State<MyHomePage> {
       setState(() {
         bannerAd = BannerAd(
           adUnitId: adState.bannerAdUnitId,
-          size: AdSize.fullBanner,
+          size: AdSize.banner,
           request: AdRequest(),
           listener: adState.adListener,
         )..load();
@@ -74,11 +72,11 @@ class MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    padding: const EdgeInsets.only(top: 30),
                     child: Text("Test your reaction speed",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 38,
+                            fontSize: 36,
                             fontWeight: FontWeight.w900,
                             color: Colors.white)),
                   ),
@@ -97,7 +95,7 @@ class MyHomePageState extends State<MyHomePage> {
                                         color: Colors.white))))),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    padding: const EdgeInsets.only(bottom: 10),
                     child: GestureDetector(
                       onTap: () => setState(() {
                         _switchState();
@@ -107,11 +105,11 @@ class MyHomePageState extends State<MyHomePage> {
                         decoration: BoxDecoration(
                             color: _getButtonColor(),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                                BorderRadius.all(Radius.circular(15))),
                         height: 140,
                         width: 200,
                         child: Text(
-                          _getButtonText(),
+                          _getButtonText().toUpperCase(),
                           style: TextStyle(
                             fontSize: 38,
                             fontWeight: FontWeight.w900,
@@ -125,9 +123,9 @@ class MyHomePageState extends State<MyHomePage> {
               ),
             ),
             bannerAd == null
-                ? SizedBox(height: 60)
+                ? SizedBox(height: 50)
                 : Container(
-                    height: 60,
+                    height: 50,
                     child: AdWidget(ad: bannerAd!),
                     alignment: Alignment.center,
                   )
@@ -140,11 +138,13 @@ class MyHomePageState extends State<MyHomePage> {
   String _getButtonText() {
     switch (gameState) {
       case GameState.readyToStart:
-        return "START";
+        return "Start";
       case GameState.waiting:
-        return "WAIT";
+        return "Wait";
       case GameState.canBeStopped:
-        return "STOP";
+        return "Stop";
+      case GameState.disableOnWait:
+        return "Return";
     }
   }
 
@@ -156,12 +156,18 @@ class MyHomePageState extends State<MyHomePage> {
         return Color(0xFFE0982D);
       case GameState.canBeStopped:
         return Color(0xFFE02D47);
+      case GameState.disableOnWait:
+        return Color(0xFFE02D47);
     }
   }
 
   void _startWaitingTimer() {
-    final int randomMilliseconds = Random().nextInt(4500) + 500;
-    Timer(Duration(milliseconds: randomMilliseconds), () {
+    final int randomSeconds = Random().nextInt(4) + 1;
+    waitingTimer = Timer(Duration(seconds: randomSeconds), () {
+      if (gameState == GameState.disableOnWait) {
+        gameState = GameState.readyToStart;
+        return;
+      }
       setState(() {
         gameState = GameState.canBeStopped;
       });
@@ -185,11 +191,20 @@ class MyHomePageState extends State<MyHomePage> {
         _startWaitingTimer();
         break;
       case GameState.waiting:
+        waitingTimer?.cancel();
+        gameState = GameState.disableOnWait;
         break;
       case GameState.canBeStopped:
         gameState = GameState.readyToStart;
         stoppableTimer?.cancel();
         break;
+      case GameState.disableOnWait:
+        gameState = GameState.readyToStart;
+        millisecondsText = "";
+        break;
+    }
+    if (gameState == GameState.disableOnWait) {
+      millisecondsText = "TIMER DIDN'T START";
     }
   }
 
@@ -201,4 +216,4 @@ class MyHomePageState extends State<MyHomePage> {
   }
 }
 
-enum GameState { readyToStart, waiting, canBeStopped }
+enum GameState { readyToStart, waiting, canBeStopped, disableOnWait }
