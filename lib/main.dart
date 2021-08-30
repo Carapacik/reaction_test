@@ -7,9 +7,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:reactiontest/ad_state.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   final initFuture = MobileAds.instance.initialize();
   final adState = AdState(initFuture);
   runApp(
@@ -23,20 +23,20 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
+    return const MaterialApp(
+      home: App(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
-  MyHomePageState createState() => MyHomePageState();
+  AppState createState() => AppState();
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class AppState extends State<App> {
   String millisecondsText = "";
   GameState gameState = GameState.readyToStart;
   Timer? waitingTimer;
@@ -53,7 +53,7 @@ class MyHomePageState extends State<MyHomePage> {
         bannerAd = BannerAd(
           adUnitId: adState.bannerAdUnitId,
           size: AdSize.banner,
-          request: AdRequest(),
+          request: const AdRequest(),
           listener: adState.adListener,
         )..load();
       });
@@ -63,7 +63,7 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF17286C),
+      backgroundColor: const Color(0xFF17286C),
       body: SafeArea(
         child: Column(
           children: [
@@ -71,28 +71,37 @@ class MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30),
-                    child: Text("Test your reaction speed",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white)),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 30),
+                    child: Text(
+                      "Test your reaction speed",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: ColoredBox(
-                        color: Colors.black45,
-                        child: SizedBox(
-                            height: 150,
-                            width: double.infinity,
-                            child: Center(
-                                child: Text(millisecondsText,
-                                    style: TextStyle(
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white))))),
+                      color: Colors.black45,
+                      child: SizedBox(
+                        height: 150,
+                        width: double.infinity,
+                        child: Center(
+                          child: Text(
+                            millisecondsText,
+                            style: const TextStyle(
+                              fontSize: 36,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
@@ -103,14 +112,16 @@ class MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                            color: _getButtonColor(),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15))),
+                          color: _getButtonColor(),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                        ),
                         height: 140,
                         width: 200,
                         child: Text(
                           _getButtonText().toUpperCase(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 38,
                             fontWeight: FontWeight.w900,
                             color: Colors.white,
@@ -122,13 +133,14 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            bannerAd == null
-                ? SizedBox(height: 50)
-                : Container(
-                    height: 50,
-                    child: AdWidget(ad: bannerAd!),
-                    alignment: Alignment.center,
-                  )
+            if (bannerAd == null)
+              const SizedBox(height: 50)
+            else
+              Container(
+                height: 50,
+                alignment: Alignment.center,
+                child: AdWidget(ad: bannerAd!),
+              )
           ],
         ),
       ),
@@ -151,13 +163,13 @@ class MyHomePageState extends State<MyHomePage> {
   Color _getButtonColor() {
     switch (gameState) {
       case GameState.readyToStart:
-        return Color(0xFF40CA88);
+        return const Color(0xFF40CA88);
       case GameState.waiting:
-        return Color(0xFFE0982D);
+        return const Color(0xFFE0982D);
       case GameState.canBeStopped:
-        return Color(0xFFE02D47);
+        return const Color(0xFFE02D47);
       case GameState.disableOnWait:
-        return Color(0xFFE02D47);
+        return const Color(0xFFE02D47);
     }
   }
 
@@ -176,7 +188,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   void _startStoppableTime() {
-    stoppableTimer = Timer.periodic(Duration(milliseconds: 16), (timer) {
+    stoppableTimer = Timer.periodic(const Duration(milliseconds: 16), (timer) {
       setState(() {
         millisecondsText = "${timer.tick * 16} ms";
       });

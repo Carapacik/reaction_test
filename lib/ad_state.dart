@@ -7,20 +7,17 @@ class AdState {
 
   AdState(this.initialization);
 
-  String get bannerAdUnitId => Platform.isAndroid
-      ? "ca-app-pub-6023624871762142/6725081797"
-      : "id for Apple";
+  String get bannerAdUnitId => Platform.isAndroid ? "ca-app-pub-6023624871762142/6725081797" : "id for Apple";
 
   BannerAdListener get adListener => _adListener;
 
-  BannerAdListener _adListener = BannerAdListener(
-    onAdLoaded: (Ad ad) => print('Ad loaded.'),
+  final BannerAdListener _adListener = BannerAdListener(
+    onAdLoaded: (Ad ad) => {},
     onAdFailedToLoad: (Ad ad, LoadAdError error) {
       ad.dispose();
-      print('Ad failed to load: $error');
     },
-    onAdOpened: (Ad ad) => print('Ad opened.'),
-    onAdClosed: (Ad ad) => print('Ad closed.'),
-    onAdImpression: (Ad ad) => print('Ad impression.'),
+    onAdOpened: (Ad ad) => {},
+    onAdClosed: (Ad ad) => {},
+    onAdImpression: (Ad ad) => {},
   );
 }

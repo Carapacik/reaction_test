@@ -2,7 +2,7 @@
     package="com.carapacik.reactiontest">
     <application
         android:icon="@mipmap/launcher_icon"
-        android:label="Reaction test">
+        android:label="Reaction Test">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
