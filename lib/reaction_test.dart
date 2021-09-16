@@ -138,6 +138,11 @@ class _TimerState extends State<_Timer> {
                 _switchState();
               });
             },
+            onLongPress: () {
+              setState(() {
+                _switchState();
+              });
+            },
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 20),
               primary: _getButtonColor(),
