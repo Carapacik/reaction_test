@@ -228,7 +228,7 @@ class _TimerState extends State<_Timer> {
         if (_reviewCounter >= 0) {
           _reviewCounter++;
         }
-        if (_reviewCounter > 10) {
+        if (_reviewCounter > 6) {
           _appearReview();
         }
         break;
@@ -245,7 +245,6 @@ class _TimerState extends State<_Timer> {
   Future<void> _appearReview() async {
     final InAppReview inAppReview = InAppReview.instance;
     if (await inAppReview.isAvailable()) {
-      _reviewCounter = 0;
       inAppReview.requestReview();
     }
   }
@@ -254,6 +253,7 @@ class _TimerState extends State<_Timer> {
   void dispose() {
     _waitingTimer?.cancel();
     _stoppableTimer?.cancel();
+    _reviewCounter = 0;
     super.dispose();
   }
 }
