@@ -53,24 +53,20 @@ class _ReactionTestState extends State<ReactionTest> {
           ),
         ],
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Column(
-            children: [
-              const Expanded(child: _Timer()),
-              if (_bannerAd != null)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: AdWidget(ad: _bannerAd!),
-                  ),
-                )
-              else
-                const SizedBox(height: 50)
-            ],
-          ),
+          const Expanded(child: _Timer()),
+          if (_bannerAd != null)
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 50,
+                alignment: Alignment.center,
+                child: AdWidget(ad: _bannerAd!),
+              ),
+            )
+          else
+            const SizedBox(height: 50)
         ],
       ),
     );
@@ -99,68 +95,71 @@ class _TimerState extends State<_Timer> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Text(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
             "Test your reaction speed",
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 40,
+              fontSize: 36,
               fontWeight: FontWeight.bold,
               foreground: Paint()..shader = _linearGradient,
             ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
-          color: Colors.black26,
-          height: 150,
-          width: 400,
-          alignment: Alignment.center,
-          child: Text(
-            _millisecondsText,
-            style: const TextStyle(
-              fontSize: 36,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            decoration: BoxDecoration(
+              color: Colors.black26,
+              borderRadius: BorderRadius.circular(30),
             ),
-          ),
-        ),
-        SizedBox(
-          width: 170,
-          height: 120,
-          child: ElevatedButton(
-            onPressed: () {
-              setState(() {
-                _switchState();
-              });
-            },
-            onLongPress: () {
-              setState(() {
-                _switchState();
-              });
-            },
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              primary: _getButtonColor(),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
+            height: 150,
+            width: 400,
+            alignment: Alignment.center,
             child: Text(
-              _getButtonText().toUpperCase(),
+              _millisecondsText,
               style: const TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+                fontSize: 36,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),
           ),
-        ),
-      ],
+          SizedBox(
+            width: 170,
+            height: 120,
+            child: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _switchState();
+                });
+              },
+              onLongPress: () {
+                setState(() {
+                  _switchState();
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                primary: _getButtonColor(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: Text(
+                _getButtonText().toUpperCase(),
+                style: const TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
