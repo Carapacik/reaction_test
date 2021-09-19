@@ -92,10 +92,10 @@ class _TimerState extends State<_Timer> {
   Timer? _stoppableTimer;
   final Shader _linearGradient = const LinearGradient(
     colors: [
-      Color(0xFFBD37F5),
       Color(0xFFE02D47),
+      Color(0xFFBD37F5),
     ],
-  ).createShader(const Rect.fromLTWH(0.0, 0.0, 300, 100));
+  ).createShader(const Rect.fromLTWH(0.0, 0.0, 250, 100));
 
   @override
   Widget build(BuildContext context) {

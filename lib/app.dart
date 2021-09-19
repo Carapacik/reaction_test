@@ -36,6 +36,7 @@ class App extends StatelessWidget {
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
+              titleTextStyle: TextStyle(color: Color(0xFF2E2E2E)),
               iconTheme: IconThemeData(color: Color(0xFF2E2E2E)),
             ),
           ),
@@ -44,6 +45,7 @@ class App extends StatelessWidget {
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
+              titleTextStyle: TextStyle(color: Color(0xFFDFDFDF)),
               iconTheme: IconThemeData(color: Color(0xFFDFDFDF)),
             ),
           ),
