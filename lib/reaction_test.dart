@@ -53,21 +53,23 @@ class _ReactionTestState extends State<ReactionTest> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const Expanded(child: _Timer()),
-          if (_bannerAd != null)
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: 50,
-                alignment: Alignment.center,
-                child: AdWidget(ad: _bannerAd!),
-              ),
-            )
-          else
-            const SizedBox(height: 50)
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            const Expanded(child: _Timer()),
+            if (_bannerAd != null)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: AdWidget(ad: _bannerAd!),
+                ),
+              )
+            else
+              const SizedBox(height: 50)
+          ],
+        ),
       ),
     );
   }
