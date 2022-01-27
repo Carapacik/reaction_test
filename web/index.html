@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="/reaction_test/">
+    <base href="$FLUTTER_BASE_HREF">
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="Test your reaction">
+    <meta content="Test your reaction" name="description">
 
+    <!-- iOS meta tags & icons -->
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta content="Reaction test" name="apple-mobile-web-app-title">
+    <meta content="Reaction Test" name="apple-mobile-web-app-title">
     <link href="icons/Icon-192.png" rel="apple-touch-icon">
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
 
     <title>Reaction test</title>
     <link href="manifest.json" rel="manifest">
@@ -32,7 +33,6 @@
       scriptTag.type = 'application/javascript';
       document.body.append(scriptTag);
     }
-
     if ('serviceWorker' in navigator) {
       // Service workers are supported. Use them.
       window.addEventListener('load', function () {

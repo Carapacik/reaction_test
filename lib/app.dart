@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'reaction_test.dart';
-import 'settings/settings_controller.dart';
-import 'settings/settings_view.dart';
+import 'package:reactiontest/main_page/main_view.dart';
+import 'package:reactiontest/settings_page/settings_controller.dart';
+import 'package:reactiontest/settings_page/settings_view.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -18,21 +15,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: settingsController,
-      builder: (BuildContext context, Widget? child) {
+      builder: (context, child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           restorationScopeId: 'app',
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en', ''),
-          ],
-          onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
+          onGenerateTitle: (BuildContext context) => "Reaction Test",
           theme: ThemeData().copyWith(
-            scaffoldBackgroundColor: const Color(0xFFDFDFDF),
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -41,7 +29,6 @@ class App extends StatelessWidget {
             ),
           ),
           darkTheme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: const Color(0xFF2E2E2E),
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -51,15 +38,15 @@ class App extends StatelessWidget {
           ),
           themeMode: settingsController.themeMode,
           onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
+            return MaterialPageRoute(
               settings: routeSettings,
               builder: (BuildContext context) {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case ReactionTest.routeName:
+                  case MainView.routeName:
                   default:
-                    return const ReactionTest();
+                    return const MainView();
                 }
               },
             );
