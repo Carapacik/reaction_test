@@ -15,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: settingsController,
-      builder: (BuildContext context, Widget? child) {
+      builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           restorationScopeId: 'app',

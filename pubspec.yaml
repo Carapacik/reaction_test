@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.1.2+8
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
+  sdk: ">=2.15.1 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,7 +13,6 @@ dependencies:
   flutter_dotenv: ^5.0.2
   google_mobile_ads: ^1.0.1
   in_app_review: ^2.0.4
-  provider: ^6.0.2
   url_strategy: ^0.2.0
 
 dev_dependencies:
