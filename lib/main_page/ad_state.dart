@@ -8,6 +8,11 @@ class AdState {
 
   Future<InitializationStatus> initialization;
 
-  String? get adUnitId =>
-      dotenv.env[Platform.isAndroid ? "ANDROID_ID" : "IOS_ID"];
+  String get adUnitId {
+    final id = dotenv.env[Platform.isAndroid ? "ANDROID_ID" : "IOS_ID"];
+    if (id?.isEmpty ?? false) {
+      return id!;
+    }
+    return BannerAd.testAdUnitId;
+  }
 }

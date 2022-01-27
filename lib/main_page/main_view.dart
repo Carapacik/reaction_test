@@ -30,7 +30,7 @@ class _MainViewState extends State<MainView> {
         setState(
           () {
             _bannerAd = BannerAd(
-              adUnitId: adState.adUnitId ?? BannerAd.testAdUnitId,
+              adUnitId: adState.adUnitId,
               size: AdSize.banner,
               request: const AdRequest(),
               listener: BannerAdListener(

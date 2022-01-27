@@ -10,11 +10,11 @@ import 'package:reactiontest/settings_page/settings_service.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   final settingsController = SettingsController(SettingsService());
   await settingsController.loadSettings();
   await dotenv.load();
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   final initFuture = MobileAds.instance.initialize();
   final ad = AdState(initFuture);
