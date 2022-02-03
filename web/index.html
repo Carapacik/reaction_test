@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="$FLUTTER_BASE_HREF">
+  <base href="$FLUTTER_BASE_HREF">
 
-    <meta charset="UTF-8">
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta content="Test your reaction" name="description">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Test your reaction">
 
-    <!-- iOS meta tags & icons -->
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta content="Reaction Test" name="apple-mobile-web-app-title">
-    <link href="icons/Icon-192.png" rel="apple-touch-icon">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="reactiontest">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png"/>
-
-    <title>Reaction test</title>
-    <link href="manifest.json" rel="manifest">
+  <title>Reaction Test</title>
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-<script>
+  <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
     function loadMainDartJs() {
@@ -33,6 +30,7 @@
       scriptTag.type = 'application/javascript';
       document.body.append(scriptTag);
     }
+
     if ('serviceWorker' in navigator) {
       // Service workers are supported. Use them.
       window.addEventListener('load', function () {
@@ -82,6 +80,6 @@
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
     }
-</script>
+  </script>
 </body>
 </html>
