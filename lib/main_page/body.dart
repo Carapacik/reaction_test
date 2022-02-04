@@ -3,9 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:reactiontest/main_page/timer_state.dart';
-import 'package:reactiontest/main_page/utils.dart'
-    if (dart.library.io) 'package:reactiontest/main_page/utils_io.dart'
-    as utils;
+import 'package:reactiontest/utils.dart'
+    if (dart.library.io) 'package:reactiontest/utils_io.dart' as utils;
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

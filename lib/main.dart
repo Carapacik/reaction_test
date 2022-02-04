@@ -4,6 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:reactiontest/app.dart';
 import 'package:reactiontest/settings_page/settings_controller.dart';
 import 'package:reactiontest/settings_page/settings_service.dart';
+import 'package:reactiontest/utils.dart'
+    if (dart.library.io) 'package:reactiontest/utils_io.dart' as utils;
 import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
@@ -12,6 +14,7 @@ Future<void> main() async {
   await settingsController.loadSettings();
   await dotenv.load();
   WidgetsFlutterBinding.ensureInitialized();
+  utils.initAd();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(App(settingsController: settingsController));
 }

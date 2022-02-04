@@ -20,14 +20,6 @@ class _MainViewState extends State<MainView> {
   bool _bannerAdIsLoaded = false;
 
   @override
-  void initState() {
-    super.initState();
-    if (Platform.isAndroid || Platform.isIOS) {
-      MobileAds.instance.initialize();
-    }
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (Platform.isAndroid || Platform.isIOS) {
