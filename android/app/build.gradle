@@ -49,7 +49,7 @@ android {
 
     defaultConfig {
         applicationId "com.carapacik.reactiontest"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

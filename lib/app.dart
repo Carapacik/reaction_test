@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reactiontest/main_page/main_view.dart';
+import 'package:reactiontest/main_page/main_view.dart'
+    if (dart.library.html) 'package:reactiontest/main_page/main_view.dart'
+    if (dart.library.io) 'package:reactiontest/main_page/main_view_io.dart'
+    as mv;
 import 'package:reactiontest/settings_page/settings_controller.dart';
 import 'package:reactiontest/settings_page/settings_view.dart';
 
@@ -44,9 +47,9 @@ class App extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case MainView.routeName:
+                  case mv.MainView.routeName:
                   default:
-                    return const MainView();
+                    return const mv.MainView();
                 }
               },
             );
