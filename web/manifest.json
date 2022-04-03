@@ -1,6 +1,6 @@
 {
     "name": "Reaction Test",
-    "short_name": "ReactionTest",
+    "short_name": "Reaction Test",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

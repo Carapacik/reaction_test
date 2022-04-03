@@ -3,8 +3,8 @@ import 'package:reactiontest/settings_page/settings_controller.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({
-    Key? key,
     required this.controller,
+    Key? key,
   }) : super(key: key);
 
   static const routeName = '/settings_page';
