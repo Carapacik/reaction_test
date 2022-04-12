@@ -9,7 +9,7 @@ import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   setPathUrlStrategy();
   final settingsController = SettingsController(SettingsService());
   await settingsController.loadSettings();

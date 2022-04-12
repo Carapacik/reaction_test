@@ -12,15 +12,13 @@ class App extends StatelessWidget {
   final SettingsController settingsController;
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: settingsController,
-      builder: (context, child) {
-        return MaterialApp(
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: settingsController,
+        builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           restorationScopeId: 'app',
-          onGenerateTitle: (BuildContext context) => "Reaction Test",
-          theme: ThemeData().copyWith(
+          onGenerateTitle: (context) => 'Reaction Test',
+          theme: ThemeData.light().copyWith(
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -37,22 +35,18 @@ class App extends StatelessWidget {
             ),
           ),
           themeMode: settingsController.themeMode,
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
-                  case MainView.routeName:
-                  default:
-                    return const MainView();
-                }
-              },
-            );
-          },
-        );
-      },
-    );
-  }
+          onGenerateRoute: (routeSettings) => MaterialPageRoute<void>(
+            settings: routeSettings,
+            builder: (context) {
+              switch (routeSettings.name) {
+                case SettingsView.routeName:
+                  return SettingsView(controller: settingsController);
+                case MainView.routeName:
+                default:
+                  return const MainView();
+              }
+            },
+          ),
+        ),
+      );
 }

@@ -9,12 +9,13 @@ class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
   TimerState _timerState = TimerState.readyToStart;
-  String _millisecondsText = "";
+  String _millisecondsText = '';
   int _reviewCounter = 0;
   Timer? _waitingTimer;
   Timer? _stoppableTimer;
@@ -23,84 +24,78 @@ class _BodyState extends State<Body> {
       Color(0xFFE02D47),
       Color(0xFFBD37F5),
     ],
-  ).createShader(const Rect.fromLTWH(0.0, 0.0, 250, 100));
+  ).createShader(const Rect.fromLTWH(0, 0, 250, 100));
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Test your reaction speed",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              foreground: Paint()..shader = _linearGradient,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            decoration: const BoxDecoration(color: Colors.black26),
-            height: 150,
-            alignment: Alignment.center,
-            child: Text(
-              _millisecondsText,
-              style: const TextStyle(
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Test your reaction speed',
+              textAlign: TextAlign.center,
+              style: TextStyle(
                 fontSize: 36,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                foreground: Paint()..shader = _linearGradient,
               ),
             ),
-          ),
-          SizedBox(
-            width: 200,
-            height: 140,
-            child: ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _switchState();
-                });
-              },
-              onLongPress: () {
-                setState(() {
-                  _switchState();
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                primary: _getButtonColor(),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              decoration: const BoxDecoration(color: Colors.black26),
+              height: 150,
+              alignment: Alignment.center,
               child: Text(
-                _getButtonText().toUpperCase(),
+                _millisecondsText,
                 style: const TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
+                  fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
+            SizedBox(
+              width: 200,
+              height: 140,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(_switchState);
+                },
+                onLongPress: () {
+                  setState(_switchState);
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  primary: _getButtonColor(),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: Text(
+                  _getButtonText().toUpperCase(),
+                  style: const TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
 
   String _getButtonText() {
     switch (_timerState) {
       case TimerState.readyToStart:
-        return "Start";
+        return 'Start';
       case TimerState.waiting:
-        return "Wait";
+        return 'Wait';
       case TimerState.canBeStopped:
-        return "Stop";
+        return 'Stop';
       case TimerState.disableOnWait:
-        return "Return";
+        return 'Return';
     }
   }
 
@@ -117,7 +112,7 @@ class _BodyState extends State<Body> {
   }
 
   void _startWaitingTimer() {
-    final int randomSeconds = Random().nextInt(4) + 1;
+    final randomSeconds = Random().nextInt(4) + 1;
     _waitingTimer = Timer(Duration(seconds: randomSeconds), () {
       if (_timerState == TimerState.disableOnWait) {
         _timerState = TimerState.readyToStart;
@@ -133,7 +128,7 @@ class _BodyState extends State<Body> {
   void _startStoppableTime() {
     _stoppableTimer = Timer.periodic(const Duration(milliseconds: 2), (timer) {
       setState(() {
-        _millisecondsText = "${timer.tick * 2} ms";
+        _millisecondsText = '${timer.tick * 2} ms';
       });
     });
   }
@@ -142,7 +137,7 @@ class _BodyState extends State<Body> {
     switch (_timerState) {
       case TimerState.readyToStart:
         _timerState = TimerState.waiting;
-        _millisecondsText = "";
+        _millisecondsText = '';
         _startWaitingTimer();
         break;
       case TimerState.waiting:
@@ -161,11 +156,11 @@ class _BodyState extends State<Body> {
         break;
       case TimerState.disableOnWait:
         _timerState = TimerState.readyToStart;
-        _millisecondsText = "";
+        _millisecondsText = '';
         break;
     }
     if (_timerState == TimerState.disableOnWait) {
-      _millisecondsText = "TOO EARLY";
+      _millisecondsText = 'TOO EARLY';
     }
   }
 

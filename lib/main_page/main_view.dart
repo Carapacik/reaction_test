@@ -37,29 +37,27 @@ class _MainViewState extends State<MainView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.pushNamed(context, SettingsView.routeName);
-            },
-          ),
-        ],
-      ),
-      body: const Body(),
-      bottomNavigationBar: SizedBox(
-        height: AdSize.banner.height.toDouble(),
-        width: AdSize.banner.width.toDouble(),
-        child: _bannerAdIsLoaded && _bannerAd != null
-            ? AdWidget(ad: _bannerAd!)
-            : null,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                Navigator.pushNamed(context, SettingsView.routeName);
+              },
+            ),
+          ],
+        ),
+        body: const Body(),
+        bottomNavigationBar: SizedBox(
+          height: AdSize.banner.height.toDouble(),
+          width: AdSize.banner.width.toDouble(),
+          child: _bannerAdIsLoaded && _bannerAd != null
+              ? AdWidget(ad: _bannerAd!)
+              : null,
+        ),
+      );
 
   @override
   void dispose() {
