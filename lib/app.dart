@@ -4,10 +4,7 @@ import 'package:reactiontest/settings_page/settings_controller.dart';
 import 'package:reactiontest/settings_page/settings_view.dart';
 
 class App extends StatelessWidget {
-  const App({
-    required this.settingsController,
-    Key? key,
-  }) : super(key: key);
+  const App({required this.settingsController, super.key});
 
   final SettingsController settingsController;
 
@@ -16,7 +13,6 @@ class App extends StatelessWidget {
         animation: settingsController,
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          restorationScopeId: 'app',
           onGenerateTitle: (context) => 'Reaction Test',
           theme: ThemeData.light().copyWith(
             appBarTheme: const AppBarTheme(

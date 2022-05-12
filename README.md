@@ -6,4 +6,4 @@
 
 Simple reaction test on Flutter with google_mobile_ads and in_app_review
 
-For your **AD** add **ID** in `.env` file
+For your **Advertisement** add your *adId* in `lib/utils.dart`

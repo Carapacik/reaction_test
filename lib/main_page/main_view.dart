@@ -8,7 +8,7 @@ import 'package:reactiontest/settings_page/settings_view.dart';
 import 'package:reactiontest/utils.dart';
 
 class MainView extends StatefulWidget {
-  const MainView({Key? key}) : super(key: key);
+  const MainView({super.key});
 
   static const routeName = '/';
 
@@ -23,10 +23,10 @@ class _MainViewState extends State<MainView> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS) && adUnitId != null) {
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS) && adId != null) {
       _bannerAd = BannerAd(
         size: AdSize.banner,
-        adUnitId: adUnitId!,
+        adUnitId: adId!,
         listener: BannerAdListener(
           onAdLoaded: (ad) => setState(() => _bannerAdIsLoaded = true),
           onAdFailedToLoad: (ad, error) => ad.dispose(),

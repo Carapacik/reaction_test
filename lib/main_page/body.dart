@@ -6,10 +6,9 @@ import 'package:reactiontest/main_page/timer_state.dart';
 import 'package:reactiontest/utils.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _BodyState createState() => _BodyState();
 }
 
@@ -150,7 +149,7 @@ class _BodyState extends State<Body> {
         if (_reviewCounter >= 0) {
           _reviewCounter++;
         }
-        if (_reviewCounter > 6) {
+        if (_reviewCounter > 5) {
           appearReview();
         }
         break;
