@@ -149,7 +149,7 @@ class _BodyState extends State<Body> {
         if (_reviewCounter >= 0) {
           _reviewCounter++;
         }
-        if (_reviewCounter > 6) {
+        if (_reviewCounter > 5) {
           appearReview();
         }
         break;
