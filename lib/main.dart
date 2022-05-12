@@ -8,10 +8,10 @@ import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   setPathUrlStrategy();
   final settingsController = SettingsController(SettingsService());
   await settingsController.loadSettings();
-  await initAd();
+  initAd();
   runApp(App(settingsController: settingsController));
 }
