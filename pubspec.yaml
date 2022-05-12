@@ -21,3 +21,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+flutter_icons:
+  image_path: 'assets/ic_logo.png'
+  adaptive_icon_background: 'assets/ic_background.png'
+  adaptive_icon_foreground: 'assets/ic_foreground.png'
+  remove_alpha_ios: false
+  remove_alpha_macos: false
+  android: true
+  ios: true
+  linux: true
+  macos: true
+  web: true
+  windows: true
