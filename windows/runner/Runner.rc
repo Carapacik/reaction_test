@@ -60,8 +60,8 @@ IDI_APP_ICON            ICON                    "resources\\app_icon.ico"
 // Version
 //
 
-#ifdef FLUTTER_BUILD_NUMBER
-#define VERSION_AS_NUMBER FLUTTER_BUILD_NUMBER
+#if defined(FLUTTER_VERSION_MAJOR) && defined(FLUTTER_VERSION_MINOR) && defined(FLUTTER_VERSION_PATCH) && defined(FLUTTER_VERSION_BUILD)
+#define VERSION_AS_NUMBER FLUTTER_VERSION_MAJOR,FLUTTER_VERSION_MINOR,FLUTTER_VERSION_PATCH,FLUTTER_VERSION_BUILD
 #else
 #define VERSION_AS_NUMBER 1,0,0,0
 #endif
@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "Carapacik" "\0"
-            VALUE "FileDescription", "Reaction Test" "\0"
+            VALUE "CompanyName", "CarapacikSpace" "\0"
+            VALUE "FileDescription", "ReactionTest" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "ReactionTest" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 Carapacik. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 carapacik.dev. All rights reserved." "\0"
             VALUE "OriginalFilename", "ReactionTest.exe" "\0"
             VALUE "ProductName", "ReactionTest" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
