@@ -31,7 +31,7 @@ flutter_launcher_icons:
   web:
     generate: true
     image_path: 'assets/ic_logo_border.png'
-    background_color: 'assets/ic_logo_border.png'
+    background_color: '#0175C2'
   macos:
     generate: true
     image_path: 'assets/ic_logo_border.png'

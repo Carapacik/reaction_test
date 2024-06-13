@@ -1,9 +1,9 @@
 {
-    "name": "reactiontest",
-    "short_name": "reactiontest",
+    "name": "ReactionTest",
+    "short_name": "ReactionTest",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "assets/ic_logo_border.png",
+    "background_color": "#0175C2",
     "theme_color": "#0175C2",
     "description": "Test your reaction",
     "orientation": "portrait-primary",

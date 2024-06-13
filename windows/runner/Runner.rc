@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.carapacik" "\0"
-            VALUE "FileDescription", "reactiontest" "\0"
+            VALUE "CompanyName", "CarapacikSpace" "\0"
+            VALUE "FileDescription", "ReactionTest" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "reactiontest" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.carapacik. All rights reserved." "\0"
-            VALUE "OriginalFilename", "reactiontest.exe" "\0"
-            VALUE "ProductName", "reactiontest" "\0"
+            VALUE "InternalName", "ReactionTest" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 carapacik.dev. All rights reserved." "\0"
+            VALUE "OriginalFilename", "ReactionTest.exe" "\0"
+            VALUE "ProductName", "ReactionTest" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
