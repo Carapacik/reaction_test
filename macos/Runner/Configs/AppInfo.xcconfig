@@ -11,4 +11,4 @@ PRODUCT_NAME = reactiontest
 PRODUCT_BUNDLE_IDENTIFIER = com.carapacik.reactiontest
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 com.carapacik. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 com.carapacik. All rights reserved.

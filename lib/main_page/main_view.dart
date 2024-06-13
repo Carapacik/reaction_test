@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -29,9 +30,10 @@ class _MainViewState extends State<MainView> {
         adUnitId: adId!,
         listener: BannerAdListener(
           onAdLoaded: (ad) => setState(() => _bannerAdIsLoaded = true),
-          onAdFailedToLoad: (ad, error) => ad.dispose(),
+          onAdFailedToLoad: (ad, error) async => ad.dispose(),
         ),
         request: const AdRequest(),
+        // ignore: discarded_futures
       )..load();
     }
   }
@@ -43,9 +45,8 @@ class _MainViewState extends State<MainView> {
           actions: [
             IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {
-                Navigator.pushNamed(context, SettingsView.routeName);
-              },
+              onPressed: () async =>
+                  Navigator.of(context).pushNamed(SettingsView.routeName),
             ),
           ],
         ),
@@ -62,7 +63,7 @@ class _MainViewState extends State<MainView> {
   @override
   void dispose() {
     super.dispose();
-    _bannerAd?.dispose();
+    unawaited(_bannerAd?.dispose());
     _bannerAdIsLoaded = false;
   }
 }

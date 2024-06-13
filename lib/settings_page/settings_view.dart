@@ -14,7 +14,7 @@ class SettingsView extends StatelessWidget {
           child: DropdownButton<ThemeMode>(
             value: controller.themeMode,
             onChanged: controller.updateThemeMode,
-            items: const [
+            items: const <DropdownMenuItem<ThemeMode>>[
               DropdownMenuItem(
                 value: ThemeMode.system,
                 child: Text('System Theme'),
@@ -26,7 +26,7 @@ class SettingsView extends StatelessWidget {
               DropdownMenuItem(
                 value: ThemeMode.dark,
                 child: Text('Dark Theme'),
-              )
+              ),
             ],
           ),
         ),

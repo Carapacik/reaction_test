@@ -15,7 +15,6 @@ class App extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           onGenerateTitle: (context) => 'Reaction Test',
           theme: ThemeData.light().copyWith(
-            useMaterial3: true,
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -24,7 +23,6 @@ class App extends StatelessWidget {
             ),
           ),
           darkTheme: ThemeData.dark().copyWith(
-            useMaterial3: true,
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,

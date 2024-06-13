@@ -66,7 +66,7 @@ class _BodyState extends State<Body> {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 20),
-                  primary: _getButtonColor(),
+                  backgroundColor: _getButtonColor(),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -138,11 +138,9 @@ class _BodyState extends State<Body> {
         _timerState = TimerState.waiting;
         _millisecondsText = '';
         _startWaitingTimer();
-        break;
       case TimerState.waiting:
         _waitingTimer?.cancel();
         _timerState = TimerState.disableOnWait;
-        break;
       case TimerState.canBeStopped:
         _timerState = TimerState.readyToStart;
         _stoppableTimer?.cancel();
@@ -150,13 +148,11 @@ class _BodyState extends State<Body> {
           _reviewCounter++;
         }
         if (_reviewCounter > 5) {
-          appearReview();
+          unawaited(appearReview());
         }
-        break;
       case TimerState.disableOnWait:
         _timerState = TimerState.readyToStart;
         _millisecondsText = '';
-        break;
     }
     if (_timerState == TimerState.disableOnWait) {
       _millisecondsText = 'TOO EARLY';
