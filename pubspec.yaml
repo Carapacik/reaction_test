@@ -15,7 +15,7 @@ dependencies:
 
 dev_dependencies:
   carapacik_lints: ^1.8.1
-  flutter_launcher_icons: ^0.13.1
+  #flutter_launcher_icons: ^0.13.1
   #flutter_native_splash: ^2.4.0
 
 flutter:
