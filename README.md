@@ -6,4 +6,6 @@
 
 Simple reaction test on Flutter with google_mobile_ads and in_app_review
 
-For your **Advertisement** add your *adId* in `lib/utils.dart`
+For your **Advertisement**:
+- Setup **appId** (https://developers.google.com/admob/flutter/quick-start#platform_specific_setup)
+- Setup **adId** in `lib/utils.dart`
