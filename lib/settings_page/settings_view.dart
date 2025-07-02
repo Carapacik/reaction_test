@@ -9,26 +9,17 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: DropdownButton<ThemeMode>(
-            value: controller.themeMode,
-            onChanged: controller.updateThemeMode,
-            items: const <DropdownMenuItem<ThemeMode>>[
-              DropdownMenuItem(
-                value: ThemeMode.system,
-                child: Text('System Theme'),
-              ),
-              DropdownMenuItem(
-                value: ThemeMode.light,
-                child: Text('Light Theme'),
-              ),
-              DropdownMenuItem(
-                value: ThemeMode.dark,
-                child: Text('Dark Theme'),
-              ),
-            ],
-          ),
-        ),
-      );
+    appBar: AppBar(),
+    body: Center(
+      child: DropdownButton<ThemeMode>(
+        value: controller.themeMode,
+        onChanged: controller.updateThemeMode,
+        items: const <DropdownMenuItem<ThemeMode>>[
+          DropdownMenuItem(value: ThemeMode.system, child: Text('System Theme')),
+          DropdownMenuItem(value: ThemeMode.light, child: Text('Light Theme')),
+          DropdownMenuItem(value: ThemeMode.dark, child: Text('Dark Theme')),
+        ],
+      ),
+    ),
+  );
 }

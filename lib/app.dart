@@ -10,39 +10,39 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-        animation: settingsController,
-        builder: (context, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateTitle: (context) => 'Reaction Test',
-          theme: ThemeData.light().copyWith(
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              titleTextStyle: TextStyle(color: Color(0xFF2E2E2E)),
-              iconTheme: IconThemeData(color: Color(0xFF2E2E2E)),
-            ),
-          ),
-          darkTheme: ThemeData.dark().copyWith(
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              titleTextStyle: TextStyle(color: Color(0xFFDFDFDF)),
-              iconTheme: IconThemeData(color: Color(0xFFDFDFDF)),
-            ),
-          ),
-          themeMode: settingsController.themeMode,
-          onGenerateRoute: (routeSettings) => MaterialPageRoute<void>(
-            settings: routeSettings,
-            builder: (context) {
-              switch (routeSettings.name) {
-                case SettingsView.routeName:
-                  return SettingsView(controller: settingsController);
-                case MainView.routeName:
-                default:
-                  return const MainView();
-              }
-            },
-          ),
+    animation: settingsController,
+    builder: (context, child) => MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateTitle: (context) => 'Reaction Test',
+      theme: ThemeData.light().copyWith(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          titleTextStyle: TextStyle(color: Color(0xFF2E2E2E)),
+          iconTheme: IconThemeData(color: Color(0xFF2E2E2E)),
         ),
-      );
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          titleTextStyle: TextStyle(color: Color(0xFFDFDFDF)),
+          iconTheme: IconThemeData(color: Color(0xFFDFDFDF)),
+        ),
+      ),
+      themeMode: settingsController.themeMode,
+      onGenerateRoute: (routeSettings) => MaterialPageRoute<void>(
+        settings: routeSettings,
+        builder: (context) {
+          switch (routeSettings.name) {
+            case SettingsView.routeName:
+              return SettingsView(controller: settingsController);
+            case MainView.routeName:
+            default:
+              return const MainView();
+          }
+        },
+      ),
+    ),
+  );
 }

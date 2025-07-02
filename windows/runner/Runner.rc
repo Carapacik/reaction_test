@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "ReactionTest" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "ReactionTest" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 carapacik.dev. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 Carapacik Space. All rights reserved." "\0"
             VALUE "OriginalFilename", "ReactionTest.exe" "\0"
             VALUE "ProductName", "ReactionTest" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
