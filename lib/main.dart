@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:reactiontest/app.dart';
-import 'package:reactiontest/settings_page/settings_controller.dart';
-import 'package:reactiontest/settings_page/settings_service.dart';
-import 'package:reactiontest/utils.dart';
-import 'package:url_strategy/url_strategy.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:reactiontest/src/app.dart';
+import 'package:reactiontest/src/settings_page/settings_controller.dart';
+import 'package:reactiontest/src/settings_page/settings_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  setPathUrlStrategy();
-  final settingsController = SettingsController(SettingsService());
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  final settingsController = SettingsController(SettingsService(SharedPreferencesAsync()));
   await settingsController.loadSettings();
-  initAd();
   runApp(App(settingsController: settingsController));
 }

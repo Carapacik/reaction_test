@@ -1,36 +1,58 @@
 name: reactiontest
 description: Test your reaction
 publish_to: 'none'
-version: 1.1.8+16
+version: 1.5.0+25
+
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ^3.13.0
+  flutter: '>=3.47.0'
 
 dependencies:
+  cupertino_icons: ^1.0.9
   flutter:
     sdk: flutter
-  google_mobile_ads: ^1.2.0
-  in_app_review: ^2.0.4
-  shared_preferences: ^2.0.15
-  url_strategy: ^0.2.0
+  in_app_review: ^2.0.12
+  material_ui: ^1.1.0
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
-  carapacik_lints:
-    git:
-      url: https://github.com/Carapacik/carapacik_lints.git
-  icons_launcher: ^1.1.7
+  carapacik_lints: ^3.13.1
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.8
+  flutter_test:
+    sdk: flutter
 
 flutter:
   uses-material-design: true
 
-flutter_icons:
-  image_path: 'assets/ic_logo.png'
-  adaptive_icon_background: 'assets/ic_background.png'
-  adaptive_icon_foreground: 'assets/ic_foreground.png'
-  remove_alpha_ios: false
-  remove_alpha_macos: false
+flutter_launcher_icons:
+  image_path: assets/app/ic_logo_border.png
+  android: true
+  adaptive_icon_background: assets/app/ic_background.png
+  adaptive_icon_foreground: assets/app/ic_foreground.png
+  min_sdk_android: 24
+  ios: true
+  image_path_ios: assets/app/ic_logo.png
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: assets/app/ic_logo_border.png
+    background_color: '#E52F54'
+    theme_color: '#E52F54'
+  macos:
+    generate: true
+    image_path: assets/app/ic_logo_border.png
+  windows:
+    generate: true
+    image_path: assets/app/ic_logo_border.png
+    icon_size: 256
+
+flutter_native_splash:
+  color: '#E52F54'
+  image: assets/app/ic_foreground.png
   android: true
   ios: true
-  linux: true
-  macos: true
   web: true
-  windows: true
+  android_12:
+    color: '#E52F54'
+    image: assets/app/ic_foreground.png

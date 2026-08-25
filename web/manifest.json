@@ -3,9 +3,9 @@
     "short_name": "Reaction Test",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "Test your reaction",
+    "background_color": "#E52F54",
+    "theme_color": "#E52F54",
+    "description": "A simple reaction speed test built with Flutter.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
